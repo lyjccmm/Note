@@ -1,0 +1,22 @@
+function l(){
+	if [ $# != 1 ];then
+		echo "USAGE: $0 INDEX"
+		echo " e.g.: $0 3"
+		return 1
+	fi
+	c=0
+	for i in `ls`; do
+		let ++c
+		if [ $c == $1 ];then
+			cd $i
+			break
+		fi
+	done
+	return 0
+}
+alias cls='clear'
+alias ..='cd ..'
+alias ll='ls -1 | cat -n'
+for i in {1..50}; do
+	alias l$i='l '$i
+done
